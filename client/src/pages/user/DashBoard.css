@@ -1,0 +1,36 @@
+/* UserDashboard.css */
+
+.profile-card,
+.orders-card{
+  border-radius: 15px;
+}
+
+.profile-img{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.profile-card p{
+  margin-bottom: 12px;
+}
+
+.table td,
+.table th{
+  padding: 15px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+  .profile-card{
+    margin-bottom: 20px;
+  }
+
+  .profile-img{
+    width: 100px;
+    height: 100px;
+  }
+
+}
