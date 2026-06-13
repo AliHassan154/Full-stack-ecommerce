@@ -1,0 +1,51 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* section */
+.filter-section h4 {
+  margin-bottom: 10px;
+}
+
+/* THIS FIXES EVERYTHING */
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;        /* key fix */
+  gap: 10px;
+  max-width: 100%;
+}
+
+/* CHIP STYLE */
+.chip {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+
+  /* prevents ugly stretching */
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+
+.chip:hover {
+  background: #f3f3f3;
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+  .chip-container {
+    flex-wrap: nowrap;     /* horizontal scroll instead of breaking UI */
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .chip {
+    flex-shrink: 0;
+  }
+}

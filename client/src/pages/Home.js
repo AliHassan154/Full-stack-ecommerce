@@ -3,6 +3,7 @@ import Layout from '../components/Layout/Layout.js'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import HomeProduct from '../components/HomeProduct/HomeProduct.js';
+import Pagination from '../components/Pagination/Pagination.js';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -35,6 +36,7 @@ const Home = () => {
 }, []);
   return (
     <Layout>
+      <Pagination  categories={categories} />
       <HomeProduct products={products} />
     </Layout>
   );

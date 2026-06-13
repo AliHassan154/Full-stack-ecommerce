@@ -8,8 +8,8 @@
   },
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "npm run dev --prefix server",
-    "both": "concurrently \"npm run server\" \"npm run client\""
+    "start": "npm run dev --prefix server",
+    "both": "concurrently \"npm run start\" \"npm run client\""
   },
   "devDependencies": {
     "autoprefixer": "^10.5.0",
