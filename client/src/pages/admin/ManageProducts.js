@@ -70,7 +70,7 @@ const ManageProducts = () => {
                 </p>
 
                 <p className="card-text">
-                  <strong>Price:</strong> ${p.price}
+                  <strong>Price:</strong> Rs. {p.price}
                 </p>
 
                 <p className="card-text">

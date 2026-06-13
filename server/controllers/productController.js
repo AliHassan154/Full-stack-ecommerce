@@ -48,34 +48,47 @@ export const createProductController = async (req, res) => {
 
 export const getProductController = async (req, res) => {
   try {
-    const cachedData = await redis.get("all-products");
-    if(cachedData){
-      const products = JSON.parse(cachedData);
-      res.status(200).send({
-        success: true,
-        countTotal: products.length,
-        message: 'All products',
-        products
-    })
-    }
-    const products = await Product.find({}).populate('category').select('-photo').limit(12).sort({ createdAt: -1 })
-    await redis.set("all-products", JSON.stringify(products))
-    res.status(200).send({
-        success: true,
-        countTotal: products.length,
-        message: 'All products',
-        products,
-    })
-  } catch (error) {
-    console.log(error)
-    res.status(500).send({
-        success: false,
-        message: 'Error in getting products',
-        error: error.message
+   const cachedData = await redis.get("all-products");
 
-    })
-    }
+if (cachedData) {
+  const products =
+    typeof cachedData === "string"
+      ? JSON.parse(cachedData)
+      : cachedData;
+
+  return res.status(200).send({
+    success: true,
+    countTotal: products.length,
+    message: "All products (cache)",
+    products,
+  });
 }
+
+    const products = await Product.find({})
+      .populate("category")
+      .select("-photo")
+      .limit(12)
+      .sort({ createdAt: -1 });
+
+    await redis.set("all-products", JSON.stringify(products));
+
+    return res.status(200).send({
+      success: true,
+      countTotal: products.length,
+      message: "All products",
+      products,
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).send({
+      success: false,
+      message: "Error in getting products",
+      error: error.message,
+    });
+  }
+};
 
 export const getSingleProductController = async (req, res) => {
   try {

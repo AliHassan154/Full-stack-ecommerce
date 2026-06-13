@@ -52,7 +52,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
 
       const { data } = await axios.post(
-        "/api/product/create-product",
+        "http://localhost:5000/api/product/create-product",
         productData, {
           headers:{
             Authorization: auth?.token,
