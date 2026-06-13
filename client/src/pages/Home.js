@@ -36,7 +36,7 @@ const Home = () => {
 }, []);
   return (
     <Layout>
-      <Pagination  categories={categories} />
+      {/* <Pagination  categories={categories} /> */}
       <HomeProduct products={products} />
     </Layout>
   );
