@@ -1,5 +1,6 @@
-import express from 'express'
 import dotenv from 'dotenv'
+dotenv.config({ path: './.env' });
+import express from 'express'
 import connectDB from './config/db.js'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -14,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express()
-dotenv.config({ path: './.env' });
+
 //middleware
 app.use(express.json());
 app.use(morgan('dev'));

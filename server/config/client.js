@@ -1,11 +1,10 @@
-import {Redis} from "@upstash/redis";
+import { Redis } from '@upstash/redis'
+
 
 const redis = new Redis({
-   url: process.env.REDIS_URL,
-  token: process.env.REDIS_TOKEN
+  url: 'https://light-vervet-115866.upstash.io',
+  token: 'gQAAAAAAAcSaAAIgcDFmNDAyMDM1NTYwMTU0Zjc0YjM1MWFhNjliMmE0ZDdlOA',
 })
 
-console.log("REDIS_URL:", process.env.REDIS_URL);
-console.log("REDIS_TOKEN:", process.env.REDIS_TOKEN);
 
 export default redis;
