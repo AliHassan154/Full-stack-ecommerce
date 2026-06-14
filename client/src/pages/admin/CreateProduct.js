@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {useAuth} from "../../context/authContext.js"
@@ -17,7 +17,7 @@ const CreateProduct = () => {
   const [photo, setPhoto] = useState("");
 
   // get all categories
-  const getAllCategories = async () => {
+  const getAllCategories = useCallback(async () => {
     try {
       const res= await axios.get(
         "https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category", {headers:{
@@ -30,11 +30,11 @@ const CreateProduct = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [auth?.token]);
 
   useEffect(() => {
     getAllCategories();
-  }, [category]);
+  }, [getAllCategories]);
 
   // create product
   const handleCreate = async (e) => {
