@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import { useAuth } from '../../context/authContext.js';
 import {Modal} from 'antd';
@@ -71,7 +71,7 @@ const CreateCategory = () => {
     }
   };
 
-  const getAllCategories = async () => {
+  const getAllCategories = useCallback(async () => {
     try {
       const { data } = await axios.get('https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category');
       if(data?.success) {
@@ -81,11 +81,11 @@ const CreateCategory = () => {
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getAllCategories();
-  }, []);
+  }, [getAllCategories]);
 
   return (
     <>

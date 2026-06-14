@@ -19,14 +19,14 @@ const CreateProduct = () => {
   // get all categories
   const getAllCategories = async () => {
     try {
-      const { data } = await axios.get(
+      const res= await axios.get(
         "https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category", {headers:{
           Authorization: auth?.token,
         },
       }
       );
 
-      setCategories(data?.category);
+      setCategories(res?.data.category);
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,6 @@ const CreateProduct = () => {
 
   // create product
   const handleCreate = async (e) => {
-    console.log(shipping)
     e.preventDefault();
 
     try {
@@ -62,6 +61,8 @@ const CreateProduct = () => {
       );
 
       alert("Product Created Successfully");
+      setShipping(false);
+      console.log(shipping)
       console.log(data)
       navigate("/dashboard/admin/manage-product")
     } catch (error) {
