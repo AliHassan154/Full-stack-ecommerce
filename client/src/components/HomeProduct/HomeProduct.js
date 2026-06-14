@@ -11,7 +11,7 @@ const HomeProduct = ({ products }) => {
             <div className="product-card" key={p._id}>
             <div className="product-image">
                 <img
-                src={`http://localhost:5000/api/product/product-photo/${p._id}`}
+                src={`https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${p._id}`}
                 alt={p.name}
                 />
             </div>

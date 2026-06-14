@@ -11,7 +11,7 @@ export default function PrivateRoutes() {
         const authCheck = async () => {
             try {
                 const res = await fetch(
-                    "http://localhost:5000/api/auth/user",
+                    "https://thorough-tranquility-production-dca2.up.railway.app/api/auth/user",
                     {
                         method: "GET",
                         headers: {

@@ -13,7 +13,7 @@ const Home = () => {
 
   const handleAllProducts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/product/get-products");
+      const { data } = await axios.get("https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-products");
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const Home = () => {
 
   const handleCategoryProducts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/category/get-category');
+      const { data } = await axios.get('https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category');
       setCategories(data.category);
     } catch (error) {
       console.log(error);

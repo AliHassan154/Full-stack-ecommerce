@@ -14,7 +14,7 @@ const CreateCategory = () => {
 
   const handleDelete = async (pId)=>{
     try {
-      const {data} = await axios.delete(`http://localhost:5000/api/category/delete-category/${pId}`, {
+      const {data} = await axios.delete(`https://thorough-tranquility-production-dca2.up.railway.app/api/category/delete-category/${pId}`, {
         headers:{
           Authorization: auth?.token,
         },
@@ -31,7 +31,7 @@ const CreateCategory = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.put(`http://localhost:5000/api/category/update-category/${selected._id}`, {name:updatedName}, {
+      const {data} = await axios.put(`https://thorough-tranquility-production-dca2.up.railway.app/api/category/update-category/${selected._id}`, {name:updatedName}, {
         headers:{
           Authorization: auth?.token,
         },
@@ -53,7 +53,7 @@ const CreateCategory = () => {
     e.preventDefault();
     console.log("auth token is:", auth?.token);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/category/create-category', { name }, {
+      const { data } = await axios.post('https://thorough-tranquility-production-dca2.up.railway.app/api/category/create-category', { name }, {
     headers: {
       Authorization: auth?.token,
     },
@@ -73,7 +73,7 @@ const CreateCategory = () => {
 
   const getAllCategories = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/category/get-category');
+      const { data } = await axios.get('https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category');
       if(data?.success) {
         setCategories(data?.category);
         console.log('Fetched categories:', data);

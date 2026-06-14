@@ -12,7 +12,7 @@ export default function AdminRoute() {
         const authCheck = async () => {
             try {
                 const res = await fetch(
-                    "http://localhost:5000/api/auth/admin",
+                    "https://thorough-tranquility-production-dca2.up.railway.app/api/auth/admin",
                     {
                         method: "GET",
                         headers: {

@@ -10,7 +10,7 @@ const ProductDetails = () => {
 
     const fetchProductDetails = async () => {
         try {
-            const {data } = await axios.get(`http://localhost:5000/api/product/get-product/${params.slug}`);
+            const {data } = await axios.get(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-product/${params.slug}`);
             setProduct(data.product);
         } catch (error) {
             console.error("Error fetching product details:", error);
@@ -26,7 +26,7 @@ const ProductDetails = () => {
         <div className="single-product">
             <div className="product-image-section">
                 <img
-                    src={`http://localhost:5000/api/product/product-photo/${product?._id}`}
+                    src={`https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${product?._id}`}
           alt={product?.name}
         />
       </div>

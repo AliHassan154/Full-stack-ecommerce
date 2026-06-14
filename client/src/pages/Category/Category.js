@@ -9,7 +9,7 @@ const CategoryPage = () => {
   
   const getAllCategory = async () => {
     try {
-      const {data} = await axios.get("/api/category/get-category");
+      const {data} = await axios.get("https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }

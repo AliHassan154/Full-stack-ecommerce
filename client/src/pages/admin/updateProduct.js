@@ -21,12 +21,12 @@ const UpdateProduct = () => {
  const getProductPhoto = () => {
     if (!pro?._id) return "";
 
-    return `http://localhost:5000/api/product/product-photo/${pro._id}`;
+    return `https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${pro._id}`;
     };
 
   const getSingleProduct = async ()=>{
     try {
-        const {data} = await axios.get(`http://localhost:5000/api/product/get-product/${params.slug}`)
+        const {data} = await axios.get(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-product/${params.slug}`)
         console.log(params.slug)
         setName(data.product.name);
         setDescription(data.product.description);
@@ -43,7 +43,7 @@ const UpdateProduct = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/category/get-category"
+        "https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category"
       );
 
       setCategories(data.category);
@@ -71,7 +71,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
 
       const { data } = await axios.put(
-        `http://localhost:5000/api/product/update-product/${pro._id}`,
+        `https://thorough-tranquility-production-dca2.up.railway.app/api/product/update-product/${pro._id}`,
         productData, {
           headers:{
             Authorization: auth?.token,
@@ -223,7 +223,7 @@ const UpdateProduct = () => {
                 (
                 pro?._id && (
                     <img
-                    src={`http://localhost:5000/api/product/product-photo/${pro._id}`}
+                    src={`https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${pro._id}`}
                     alt={pro.name}
                     height="200"
                     />

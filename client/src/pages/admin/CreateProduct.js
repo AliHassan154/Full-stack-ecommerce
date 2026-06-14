@@ -20,7 +20,7 @@ const CreateProduct = () => {
   const getAllCategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/category/get-category", {headers:{
+        "https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category", {headers:{
           Authorization: auth?.token,
         },
       }
@@ -52,7 +52,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/product/create-product",
+        "https://thorough-tranquility-production-dca2.up.railway.app/api/product/create-product",
         productData, {
           headers:{
             Authorization: auth?.token,

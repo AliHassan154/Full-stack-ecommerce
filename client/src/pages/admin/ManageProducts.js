@@ -8,14 +8,14 @@ const ManageProducts = () => {
   const [auth] = useAuth();
 
   const handleAllProducts = async ()=>{
-    const {data} = await axios.get('http://localhost:5000/api/product/get-products');
+    const {data} = await axios.get('https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-products');
     if(data.success){
       console.log(data.products);
       setProducts(data.products);
     }
   }
   const handleDelete = async (pId)=>{
-    const {data} = await axios.delete(`http://localhost:5000/api/product/delete-product/${pId}`,{
+    const {data} = await axios.delete(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/delete-product/${pId}`,{
       headers:{
         Authorization: auth?.token
       }
@@ -50,7 +50,7 @@ const ManageProducts = () => {
             <div className="card h-100 shadow">
 
               <img
-                src={`http://localhost:5000/api/product/product-photo/${p._id}`}
+                src={`https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${p._id}`}
                 className="card-img-top"
                 alt={p.name}
                 style={{
