@@ -76,7 +76,6 @@ const CreateCategory = () => {
       const { data } = await axios.get('https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category');
       if(data?.success) {
         setCategories(data?.category);
-        console.log('Fetched categories:', data);
       }
     } catch (error) {
       console.error('Error fetching categories:', error);

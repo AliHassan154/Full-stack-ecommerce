@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import {useAuth} from "../../context/authContext.js"
@@ -24,7 +24,7 @@ const UpdateProduct = () => {
 //     return `https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${pro._id}`;
 //     };
 
-  const getSingleProduct = async ()=>{
+  const getSingleProduct = useCallback(async () => {
     try {
         const {data} = await axios.get(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-product/${params.slug}`)
         console.log(params.slug)
@@ -37,26 +37,26 @@ const UpdateProduct = () => {
     } catch (error) {
         console.log("Error in single product fetching:" ,error)
     }
-  }
+  }, [params.slug]);
 
   // get all categories
-  const getAllCategories = async () => {
+  const getAllCategories = useCallback(async () => {
     try {
       const { data } = await axios.get(
         "https://thorough-tranquility-production-dca2.up.railway.app/api/category/get-category"
       );
 
       setCategories(data.category);
-      console.log(shipping)
+      // console.log(shipping)
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getAllCategories();
     getSingleProduct();
-  }, [category, params.slug]);
+  }, [getAllCategories, getSingleProduct]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -89,8 +89,8 @@ const UpdateProduct = () => {
         setPro({});
         setPrice("")
         setPhoto("")
+        setShipping(true);
         console.log(data)
-        console.log(shipping)
     } catch (error) {
       console.log(error.message);
     }

@@ -1,25 +1,25 @@
 import { useParams } from "react-router-dom";
 import "./ProductDetails.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../Layout/Layout.js";
 
 const ProductDetails = () => {
     const [product, setProduct] = useState({});
     const params = useParams();
-
-    const fetchProductDetails = async () => {
+    const {slug} = params;
+    const fetchProductDetails = useCallback(async () => {
         try {
-            const {data } = await axios.get(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-product/${params.slug}`);
+            const {data } = await axios.get(`https://thorough-tranquility-production-dca2.up.railway.app/api/product/get-product/${slug}`);
             setProduct(data.product);
         } catch (error) {
             console.error("Error fetching product details:", error);
         }
-    };
+    }, [slug]);
 
     useEffect(() => {
         fetchProductDetails();
-    }, [params.slug]);
+    }, [fetchProductDetails]);
 
     return (
         <Layout>
