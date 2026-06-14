@@ -19,7 +19,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         fetchProductDetails();
-    }, [params?.slug]);
+    }, [params.slug]);
 
     return (
         <Layout>

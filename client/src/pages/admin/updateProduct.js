@@ -18,11 +18,11 @@ const UpdateProduct = () => {
   const [photo, setPhoto] = useState("");
   const [pro, setPro] = useState({});
 
- const getProductPhoto = () => {
-    if (!pro?._id) return "";
+//  const getProductPhoto = () => {
+//     if (!pro?._id) return "";
 
-    return `https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${pro._id}`;
-    };
+//     return `https://thorough-tranquility-production-dca2.up.railway.app/api/product/product-photo/${pro._id}`;
+//     };
 
   const getSingleProduct = async ()=>{
     try {
@@ -47,6 +47,7 @@ const UpdateProduct = () => {
       );
 
       setCategories(data.category);
+      console.log(shipping)
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +56,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     getAllCategories();
     getSingleProduct();
-  }, []);
+  }, [category, params.slug]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -88,6 +89,8 @@ const UpdateProduct = () => {
         setPro({});
         setPrice("")
         setPhoto("")
+        console.log(data)
+        console.log(shipping)
     } catch (error) {
       console.log(error.message);
     }

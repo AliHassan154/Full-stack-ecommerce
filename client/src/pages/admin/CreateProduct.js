@@ -34,10 +34,11 @@ const CreateProduct = () => {
 
   useEffect(() => {
     getAllCategories();
-  }, []);
+  }, [category]);
 
   // create product
   const handleCreate = async (e) => {
+    console.log(shipping)
     e.preventDefault();
 
     try {
@@ -61,6 +62,7 @@ const CreateProduct = () => {
       );
 
       alert("Product Created Successfully");
+      console.log(data)
       navigate("/dashboard/admin/manage-product")
     } catch (error) {
       console.log(error);
